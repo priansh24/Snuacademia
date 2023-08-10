@@ -436,6 +436,49 @@ document.getElementById("erpf").addEventListener("click", () => {
   erpGen();
 });
 
+//about us
+function fillteam(array) {
+  let teamPeople = document.querySelector(".teamPeople");
+  teamPeople.innerHTML = "";
+
+  for (let index = 0; index < array.length; index++) {
+    const element = array[index];
+    let div = document.createElement("div");
+    div.innerHTML = `<div class="person">
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <img
+            src="${element.img}"
+            alt="Avatar"
+            height="100%"
+          />
+        </div>
+        <div class="flip-card-back">
+          <span>'${element.quote}'</span>
+          <div class="socials">
+            <a href=${element.insta} target="_blank"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href=${element.linkedin} target="_blank"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+            <a
+              href=${element.git}
+              target="_blank"
+              ><i class="bi bi-github"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <span>${element.firstName} ${element.lastName}</span>
+    <span>${element.designation}</span>
+  </div>`;
+    teamPeople.appendChild(div);
+  }
+}
+
 const aboutGen = () => {
   generate.innerHTML = `<div class="about">
   <div class="aboutContent">
@@ -470,9 +513,9 @@ const aboutGen = () => {
   <div class="team">
     <div class="meetTeam">MEET THE TEAM</div>
     <div class="teamBay">
-      <div>Core</div>
-      <div>Dev Team</div>
-      <div>Content Team</div>
+      <div id='core'>Core</div>
+      <div id='dev'>Dev Team</div>
+      <div id='content-team'>Content Team</div>
     </div>
     <div class="teamPeople">
       <div data-active="active">
@@ -545,17 +588,96 @@ const aboutGen = () => {
   </div>
 </div>`;
   let teamBay = document.querySelector(".teamBay");
+  fillteam(team.core);
+  document.getElementById("core").addEventListener("click", () => {
+    fillteam(team.core);
+  });
+  document.getElementById("dev").addEventListener("click", () => {
+    fillteam(team.dev);
+  });
+  document.getElementById("content-team").addEventListener("click", () => {
+    fillteam(team.content);
+  });
 };
 
-// let team = {
-//   [{
-//     firstName:"Vamsi", lastName:"Kaparthi", designation: "Cofounder", insta: "https://www.instagram.com/__vamsi__17/", linkedin: "https://www.linkedin.com/in/vamsi-kaparthi-371730222", git:"https://github.com/VamsiKaparthi", img:
-//   },
-//   {
-
-//   }
-// ]
-// }
+let team = {
+  core: [
+    {
+      firstName: "Vamsi",
+      lastName: "Kaparthi",
+      designation: "Cofounder and developer",
+      insta: "https://www.instagram.com/__vamsi__17/",
+      linkedin: "https://www.linkedin.com/in/vamsi-kaparthi-371730222",
+      git: "https://github.com/VamsiKaparthi",
+      img: "../src/reasources/team/vamsi.jpg",
+      quote: "Quote from Vamsi about his role and passion.",
+    },
+    {
+      firstName: "Aditya",
+      lastName: "Agarwal",
+      designation: "Cofounder and developer",
+      insta: "https://www.instagram.com/adityagarg.ag/",
+      linkedin: "https://www.linkedin.com/in/aditya-agarwal-977a30240/",
+      git: "https://github.com/AdityaECE",
+      img: "url_to_aditya_image",
+      quote: "Quote from Aditya about his role and vision.",
+    },
+    {
+      firstName: "Vidip",
+      lastName: "Jain",
+      designation: "Cofounder and Content",
+      insta: "https://www.instagram.com/vidipjain/",
+      linkedin: "https://www.linkedin.com/in/vidip-jain-a37a841b0/",
+      git: "https://github.com/VidipJain7",
+      img: "url_to_vidip_image",
+      quote: "Quote from Vidip about the importance of content.",
+    },
+  ],
+  content: [
+    {
+      firstName: "Soham",
+      lastName: "Moulree",
+      designation: "Content",
+      insta: "https://www.instagram.com/__soaham20/",
+      linkedin: "https://www.linkedin.com/in/soaham-moulree-818714281/",
+      git: "https://github.com",
+      img: "url_to_soham_image",
+      quote: "Quote from Soham about his creative journey.",
+    },
+    {
+      firstName: "Harika",
+      lastName: "Saxena",
+      designation: "Content",
+      insta: "https://www.instagram.com/_.harika_/",
+      linkedin: "https://www.linkedin.com/in/harika-saxena-2850651a0/",
+      git: "https://github.com/harikasaxena",
+      img: "../src/reasources/team/harika.jpg",
+      quote: "Quote from Harika about the impact of storytelling.",
+    },
+  ],
+  dev: [
+    {
+      firstName: "Priyansh",
+      lastName: "Singhal",
+      designation: "Developer",
+      insta: "https://www.instagram.com/_ansh24/",
+      linkedin: "https://www.linkedin.com/in/singhalpriyansh24/",
+      git: "https://github.com/AdityaECE",
+      img: "../src/reasources/team/priyansh.jpeg",
+      quote: "Quote from Priyansh about his journey in coding.",
+    },
+    {
+      firstName: "Tanmay",
+      lastName: "Sachan",
+      designation: "Developer",
+      insta: "https://www.instagram.com/tanmay__258/",
+      linkedin: "https://www.linkedin.com/in/tanmay-sachan-72b349236/",
+      git: "https://github.com/tanmay812",
+      img: "url_to_tanmay_image",
+      quote: "Quote from Tanmay about his passion for software development.",
+    },
+  ],
+};
 
 document.addEventListener("click", function (event) {
   const aboutButton = event.target.closest(".sloganButton");
@@ -571,4 +693,3 @@ const slideShow = () => {
   }
 };
 slideShow();
-

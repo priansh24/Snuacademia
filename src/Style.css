@@ -10,8 +10,8 @@
   --font-color: white;
   --secondary: #536dfe;
   --color1: rgb(240, 240, 240);
-  --color3: rgb(23, 23, 24) ;
-  --color2: rgb(23, 23, 24) ;
+  --color3: rgb(23, 23, 24);
+  --color2: rgb(23, 23, 24);
 }
 
 body {
@@ -23,9 +23,9 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  
-  --color1: black ;
-  --color2: rgb(23, 23, 24) ;
+
+  --color1: black;
+  --color2: rgb(23, 23, 24);
   --color3: rgb(240, 240, 240);
 }
 
@@ -40,7 +40,7 @@ body {
 
   list-style: none;
   position: relative;
- /* padding: 12px 20px;*/
+  /* padding: 12px 20px;*/
 }
 
 .logo {
@@ -404,6 +404,11 @@ a.ar {
   width: 90%;
   padding: 10px;
   border: 1px solid var(--secondary);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
 }
 .teamPeople > div {
   display: flex;
@@ -418,10 +423,11 @@ a.ar {
   flex-direction: column;
   align-items: center;
 }
+
 .flip-card {
   background-color: transparent;
-  width: min(25vw, 300px);
-  height: min(25vw, 300px);
+  width: min(45vw, 300px);
+  height: min(45vw, 300px);
   perspective: 1000px;
   margin-bottom: 0.8vw;
 }
@@ -455,7 +461,7 @@ a.ar {
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
-.flip-card-front > img{
+.flip-card-front > img {
   border-radius: 10px;
 }
 
@@ -468,23 +474,23 @@ a.ar {
 .flip-card-back {
   background-color: var(--secondary);
   color: var(--font-color);
-  font-size: max(1.2vw, 13px);
+  font-size: min(3vw, 25px);
   transform: rotateY(180deg);
 }
-.flip-card-back > span{
+.flip-card-back > span {
   margin-bottom: 2.5vw;
+  width: 90%;
 }
 .socials {
   display: flex;
-  justify-content: center;
-  gap: max(1vw, 10%);
+  justify-content: space-between;
   width: 70%;
 }
 .socials > a > i {
-  font-size: max(2vw, 15px);
+  font-size: min(5vw, 30px);
 }
 .person > span {
-  font-size: max(1.3vw, 13px);
+  font-size: min(3vw, 20px);
 }
 /*slider*/
 
@@ -693,7 +699,9 @@ p {
 }
 
 /*hamburger menu*/
-.options  {display: flex;}
+.options {
+  display: flex;
+}
 /* .options div {padding-left: 30px;}
 /*.options div #home #erp #road #study {
     display: inline-block;
@@ -716,44 +724,54 @@ p {
     transition: 0.15s ease-in-out;
 }
 .options div #home #erp #road  #study:hover:after {width: 100%;}*/
-.open-menu , .close-menu {
-    position: absolute;
-    color: var(--color1);
-    cursor: pointer;
-    font-size: 1.5rem;
-    display: none;
+.open-menu,
+.close-menu {
+  position: absolute;
+  color: var(--color1);
+  cursor: pointer;
+  font-size: 1.5rem;
+  display: none;
 }
 .open-menu {
   position: absolute;
-    top: 50%;
-    left: 52%;
-    /*transform: translateY(-50%);*/
-    transform: translate(-50%, -50%);
+  top: 50%;
+  left: 52%;
+  /*transform: translateY(-50%);*/
+  transform: translate(-50%, -50%);
 }
 .close-menu {
   color: var(--color1);
-    top: 40px;
-    right: 35px;
+  top: 40px;
+  right: 35px;
 }
-#check {display: none;}
-@media(max-width: 610px){
+#check {
+  display: none;
+}
+@media (max-width: 610px) {
   .options {
     font-weight: bold;
     font-size: larger;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 50vh;
-      position: fixed;
-      top: -100%;
-      right: 0;
-      z-index: 100;
-      background-color: var(--color3);
-      transition: all 0.4s ease-in-out;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 50vh;
+    position: fixed;
+    top: -100%;
+    right: 0;
+    z-index: 100;
+    background-color: var(--color3);
+    transition: all 0.4s ease-in-out;
   }
-  .options div {margin-top: 40px;}
-   /* .options div #home #erp #road  #study {padding: 10px;}*/
-    .open-menu , .close-menu {display: block;}
-    #check:checked ~ .options {top: 0;}
+  .options div {
+    margin-top: 40px;
+  }
+  /* .options div #home #erp #road  #study {padding: 10px;}*/
+  .open-menu,
+  .close-menu {
+    display: block;
+  }
+  #check:checked ~ .options {
+    top: 0;
+  }
 }
