@@ -148,9 +148,35 @@ let studyGen = () => {
     <div class="courses">
         
     </div>
+    <div id="pagination">
+      <button id="prev-btn" disabled>Previous</button>
+      <span id="page-info">Page 1 of 1</span>
+      <button id="next-btn">Next</button>
+  </div>
 </div>`;
 
-  const generateCourses = (array, linkArray) => {
+  document.getElementById("prev-btn").addEventListener("click", goToPrevPage);
+  document.getElementById("next-btn").addEventListener("click", goToNextPage);
+
+  let currentPage = 1;
+  let totalPages = 1;
+
+  // Function to fetch subjects for a specific page
+  function fetchSubjects(page) {
+    fetch(`http://localhost:5500/subjects?page=${page}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // Now you have the paginated subjects in the 'data' variable.
+        // You can use this data to display content in the browser.
+        generateCourses(data.subjects, data.allSubjects);
+        currentPage = data.currentPage;
+        totalPages = data.totalPages;
+        updatePaginationControls();
+      })
+      .catch((error) => console.error(error));
+  }
+
+  const generateCourses = (subjectPage, allSubjects) => {
     let courses = document.querySelector(".courses");
     let searchBar = document.getElementById("course-select");
 
@@ -161,25 +187,43 @@ let studyGen = () => {
       // Clear existing courses
       courses.innerHTML = "";
 
-      for (let index = 0; index < array.length; index++) {
-        const courseName = array[index].toLowerCase();
-        const link = linkArray[index];
+      const foldersArray =
+        searchText.trim().length > 0 ? allSubjects : subjectPage;
 
-        if (courseName.includes(searchText)) {
+      for (let index = 0; index < foldersArray.length; index++) {
+        const courseName = allSubjects[index].name.toLowerCase();
+        const link = `https://drive.google.com/drive/u/3/folders/${foldersArray[index].id}`;
+        const courseCode = foldersArray[index].name.slice(0, 6);
+        const subjectName = foldersArray[index].name.slice(7);
+        foldersArray[index].courseCode = courseCode;
+        foldersArray[index].subjectName = subjectName;
+
+        if (courseName.trim().includes(searchText.trim())) {
           let courseDiv = document.createElement("div");
-          courseDiv.classList.add("courseBox");
+          let courseDiv1 = document.createElement("div");
+          let courseDiv2 = document.createElement("div");
+          courseDiv1.classList.add("courseBox");
+          courseDiv2.classList.add("courseName");
           courses.appendChild(courseDiv);
-          courseDiv.innerHTML = `<span id="course-${index}">${array[index]}</span>
-          <span class="glink"  id="link-${index}"><a href="${link}" target="_blank">Content</a></span>`;
+          courseDiv.appendChild(courseDiv1);
+          courseDiv1.innerHTML = `<span id="course-${index}">${foldersArray[index].courseCode}</span>
+            <span class="glink"  id="link-${index}"><a href="${link}" target="_blank">Content</a></span>`;
+          // courseDiv2.classList.add('courseName');
+          courseDiv.appendChild(courseDiv2);
+          courseDiv2.innerHTML = `<h4>${foldersArray[index].subjectName}</h4>`;
 
-          courseDiv.addEventListener("mouseover", () => {
+          courseDiv1.addEventListener("mouseover", () => {
             document.getElementById(`course-${index}`).style.display = "none";
             document.getElementById(`link-${index}`).style.display = "flex";
           });
-          courseDiv.addEventListener("mouseout", () => {
+          courseDiv1.addEventListener("mouseout", () => {
             document.getElementById(`course-${index}`).style.display = "flex";
             document.getElementById(`link-${index}`).style.display = "none";
           });
+          let courseDes = document.createElement("div");
+          const html = `<h2 class = 'course-des>${foldersArray[index].name}</h2>`;
+          courseDes.innerHTML = html;
+          courses.appendChild(courseDes);
         }
       }
     });
@@ -187,17 +231,35 @@ let studyGen = () => {
     searchBar.dispatchEvent(new Event("input"));
   };
 
-  //example arrays
-  let courseArr = ["DES101", "FAC202", "MEC104", "MKT202", "OHM401", "STM204"];
-  let linkArr = [
-    "https://drive.google.com/drive/folders/1pfWH0J2ek7yxTMbmoCv-4YQPB5XKOLHr?usp=sharing",
-    "https://drive.google.com/drive/folders/1q7UsKWFg5odT6rX57T4LArhSY5eLa2RJ?usp=sharing",
-    "https://drive.google.com/drive/folders/1NlrHKCP52b53OQiYcdBgO7NvL9eQ81zv?usp=sharing",
-    "https://drive.google.com/drive/folders/1tzIs2ux6lR1u8eT9fTAD-5JXBkhAGqrb?usp=drive_link",
-    "https://drive.google.com/drive/folders/1_-mkdQHCqpPceiQeZw7j91r0hVcUhmhJ?usp=sharing",
-    "https://drive.google.com/drive/folders/1Z9BqJC1vCnMxFSRT8YMafB1sdlLAv8mu?usp=sharing",
-  ];
-  generateCourses(courseArr, linkArr);
+  function updatePaginationControls() {
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    const pageInfo = document.getElementById("page-info");
+
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+
+    pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+  }
+
+  // Function to go to the previous page
+  function goToPrevPage() {
+    if (currentPage > 1) {
+      currentPage--;
+      fetchSubjects(currentPage);
+    }
+  }
+
+  // Function to go to the next page
+  function goToNextPage() {
+    if (currentPage < totalPages) {
+      currentPage++;
+      fetchSubjects(currentPage);
+    }
+  }
+
+  // Fetch subjects for the first page initially
+  fetchSubjects(1);
 };
 document.getElementById("study").addEventListener("click", studyGen);
 document.getElementById("studyf").addEventListener("click", studyGen);
