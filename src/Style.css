@@ -1,4 +1,5 @@
 /*Using Css variable*/
+
 :root {
   --bg-color: white;
   --font-color: black;
@@ -24,7 +25,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-
   --color1: black;
   --color2: rgb(23, 23, 24);
   --color3: rgb(240, 240, 240);
@@ -38,7 +38,6 @@ body {
   height: 50px;
   align-items: center;
   margin-right: 2%;
-
   list-style: none;
   position: relative;
   /* padding: 12px 20px;*/
@@ -97,12 +96,14 @@ i {
 }
 
 /* study-material page */
+
 .study,
 .roadMaps {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .tagline {
   margin-top: 5vh;
   font-size: min(8vw, 70px);
@@ -111,6 +112,7 @@ i {
   flex-direction: column;
   align-items: center;
 }
+
 .search-bar {
   margin-top: 5vh;
   display: flex;
@@ -124,6 +126,7 @@ i {
   gap: 10px;
   border-radius: 5px;
 }
+
 #course-select {
   background-color: var(--bg-color);
   color: var(--font-color);
@@ -140,7 +143,6 @@ i {
 .courses,
 .roads {
   width: 90%;
-
   margin-top: 50px;
   padding: 20px;
   display: flex;
@@ -159,31 +161,45 @@ i {
   color: var(--font-color);
 }
 
+.courseName {
+  color: var(--font-color);
+  /* border: 5px solid red; */
+  width: 300px;
+  text-align: center;
+}
+
 .glink {
   display: none;
   border-bottom: none;
 }
+
 a {
   text-decoration: none;
   color: var(--font-color);
   border-bottom: none;
 }
+
 a:visited {
   text-decoration: none;
   color: var(--font-color);
 }
+
 a:hover {
   text-decoration: none;
   color: var(--font-color);
 }
+
 a:active {
   text-decoration: none;
   color: var(--font-color);
 }
+
 .generate {
   padding-bottom: 20px;
 }
+
 /*erp management*/
+
 .linkSection {
   margin-top: 5vh;
   display: flex;
@@ -192,11 +208,13 @@ a:active {
   gap: 10px;
   flex-wrap: wrap;
 }
+
 .erpManagement {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .linkSection > div {
   display: flex;
   justify-content: center;
@@ -211,11 +229,13 @@ a:active {
   flex-wrap: wrap;
   cursor: pointer;
 }
+
 .linkSection > div:hover {
   color: var(--bg-color);
   background-color: var(--font-color);
   transition: 100ms;
 }
+
 .sub-tag {
   font-size: 0.5em;
   font-weight: 200;
@@ -223,6 +243,7 @@ a:active {
   display: flex;
   text-align: center;
 }
+
 .faqs {
   display: flex;
   flex-direction: column;
@@ -230,6 +251,7 @@ a:active {
   width: 95%;
   gap: 20px;
 }
+
 .faqs > div {
   border: 1px solid var(--font-color);
   display: flex;
@@ -238,9 +260,11 @@ a:active {
   padding: 15px;
   border-radius: 2px;
 }
+
 .sol {
   display: none;
 }
+
 .roadBox {
   height: 200px;
   width: 300px;
@@ -251,6 +275,7 @@ a:active {
   align-items: center;
   color: var(--font-color);
 }
+
 .glink-r {
   display: none;
   border: 1px solid var(--font-color);
@@ -261,14 +286,18 @@ a:active {
   justify-content: center;
   border-radius: 5px;
 }
+
 .glink-r:hover {
   background-color: var(--font-color);
   color: var(--bg-color);
 }
+
 a.ar {
   color: inherit;
 }
+
 /* footer */
+
 .footer {
   background-color: rgb(23, 23, 24);
   padding: 15px;
@@ -288,14 +317,17 @@ a.ar {
   width: 50%;
   flex-wrap: wrap;
 }
+
 .reasources > div:hover {
   color: var(--secondary);
   cursor: pointer;
 }
+
 .contact > a {
   color: white;
   margin: 10px;
 }
+
 .contact > a:hover {
   color: var(--secondary);
 }
@@ -308,16 +340,20 @@ a.ar {
   justify-content: center;
   gap: 8px;
 }
+
 .foot-logo:hover {
   color: var(--secondary);
 }
+
 .generate {
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 /*About us*/
+
 .sloganButton {
   margin-top: 4vw;
   width: max(200px, 20vw);
@@ -329,20 +365,24 @@ a.ar {
   border-radius: 10px;
   font-size: max(1.2vw, 20px);
 }
+
 .sloganButton:hover {
   background-color: var(--secondary);
   cursor: pointer;
 }
+
 .about {
   margin-top: 1vh;
   padding: 5vw;
 }
+
 .aboutContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 10vw;
 }
+
 .firstContent,
 .secondContent {
   display: flex;
@@ -350,41 +390,50 @@ a.ar {
   padding-bottom: 8vw;
   border-bottom: 1px solid var(--font-color);
 }
+
 .secondContent {
   flex-direction: row-reverse;
   border-bottom: none;
 }
+
 .textContent {
   display: flex;
   flex-direction: column;
 }
+
 .question {
   font-size: 3vw;
   margin-bottom: 20px;
 }
+
 .question > span {
   color: var(--secondary);
 }
+
 .answer {
   font-size: min(2vw, 30px);
 }
+
 .team {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: min(6vw, 80px);
 }
+
 .meetTeam {
   width: fit-content;
   font-size: 5.5vw;
   font-weight: 600;
   border-bottom: 2px solid var(--secondary);
 }
+
 .teamBay {
   display: flex;
   width: 90%;
   justify-content: space-between;
 }
+
 .teamBay > div {
   display: flex;
   justify-content: center;
@@ -397,10 +446,12 @@ a.ar {
   border: 1px solid var(--font-color);
   border-radius: 10px;
 }
+
 .teamBay > div:hover {
   background-color: var(--secondary);
   cursor: pointer;
 }
+
 .teamPeople {
   width: 90%;
   padding: 10px;
@@ -411,6 +462,7 @@ a.ar {
   align-items: center;
   gap: 10px;
 }
+
 .teamPeople > div {
   display: flex;
   height: 100%;
@@ -418,7 +470,9 @@ a.ar {
   justify-content: center;
   gap: 10%;
 }
+
 /*flipcard*/
+
 .person {
   display: flex;
   flex-direction: column;
@@ -434,6 +488,7 @@ a.ar {
 }
 
 /* This container is needed to position the front and back side */
+
 .flip-card-inner {
   position: relative;
   width: 100%;
@@ -444,11 +499,13 @@ a.ar {
 }
 
 /* Do an horizontal flip when you move the mouse over the flip box container */
+
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
 
 /* Position the front and back side */
+
 .flip-card-front,
 .flip-card-back {
   border-radius: 10px;
@@ -459,40 +516,49 @@ a.ar {
   justify-content: center;
   width: 100%;
   height: 100%;
-  -webkit-backface-visibility: hidden; /* Safari */
+  -webkit-backface-visibility: hidden;
+  /* Safari */
   backface-visibility: hidden;
 }
+
 .flip-card-front > img {
   border-radius: 10px;
 }
 
 /* Style the front side (fallback if image is missing) */
+
 .flip-card-front {
   color: var(--font-color);
 }
 
 /* Style the back side */
+
 .flip-card-back {
   background-color: var(--secondary);
   color: var(--font-color);
   font-size: min(3vw, 25px);
   transform: rotateY(180deg);
 }
+
 .flip-card-back > span {
   margin-bottom: 2.5vw;
   width: 90%;
 }
+
 .socials {
   display: flex;
   justify-content: space-between;
   width: 70%;
 }
+
 .socials > a > i {
   font-size: min(5vw, 30px);
 }
+
 .person > span {
   font-size: min(3vw, 20px);
 }
+
 /*slider*/
 
 #slider {
@@ -556,15 +622,18 @@ p {
   box-sizing: border-box;
   padding: 20px;
 }
+
 .sliderContent {
   display: flex;
   align-items: center;
   gap: 40px;
   height: 100%;
 }
+
 #slide1 {
   background: #066892;
 }
+
 .dark #slide1 {
   background: #232e6f;
 }
@@ -572,6 +641,7 @@ p {
 #slide2 {
   background: #0d97d2;
 }
+
 .dark #slide2 {
   background: #384ab2;
 }
@@ -579,9 +649,11 @@ p {
 #slide3 {
   background: #00b0ff;
 }
+
 .dark #slide3 {
   background: #536dfe;
 }
+
 /*
 #slide4 {
   background: slateblue;
@@ -594,6 +666,7 @@ p {
 /* Slider Functionality */
 
 /* Active Slide */
+
 #s1:checked ~ #slide1,
 #s2:checked ~ #slide2,
 #s3:checked ~ #slide3,
@@ -604,6 +677,7 @@ p {
 }
 
 /* Next Slide */
+
 #s1:checked ~ #slide2,
 #s2:checked ~ #slide3,
 #s3:checked ~ #slide4,
@@ -614,6 +688,7 @@ p {
 }
 
 /* Next to Next Slide */
+
 #s1:checked ~ #slide3,
 #s2:checked ~ #slide4,
 #s3:checked ~ #slide5,
@@ -624,6 +699,7 @@ p {
 }
 
 /* Previous to Previous Slide */
+
 #s1:checked ~ #slide4,
 #s2:checked ~ #slide5,
 #s3:checked ~ #slide1,
@@ -634,6 +710,7 @@ p {
 }
 
 /* Previous Slide */
+
 #s1:checked ~ #slide5,
 #s2:checked ~ #slide1,
 #s3:checked ~ #slide2,
@@ -644,6 +721,7 @@ p {
 }
 
 /*Responsive*/
+
 @media screen and (max-width: 800px) {
   /*homepage taglines*/
   body {
@@ -700,9 +778,11 @@ p {
 }
 
 /*hamburger menu*/
+
 .options {
   display: flex;
 }
+
 /* .options div {padding-left: 30px;}
 /*.options div #home #erp #road #study {
     display: inline-block;
@@ -725,6 +805,7 @@ p {
     transition: 0.15s ease-in-out;
 }
 .options div #home #erp #road  #study:hover:after {width: 100%;}*/
+
 .open-menu,
 .close-menu {
   position: absolute;
@@ -733,6 +814,7 @@ p {
   font-size: 1.5rem;
   display: none;
 }
+
 .open-menu {
   position: absolute;
   top: 50%;
@@ -740,14 +822,17 @@ p {
   /*transform: translateY(-50%);*/
   transform: translate(-50%, -50%);
 }
+
 .close-menu {
   color: var(--color1);
   top: 40px;
   right: 35px;
 }
+
 #check {
   display: none;
 }
+
 @media (max-width: 610px) {
   .options {
     font-weight: bold;
