@@ -8,7 +8,7 @@ const useragent = require("express-useragent");
 
 const cors = require("cors");
 const app = express();
-const port = 5500;
+const port = process.env.PORT || 5500;
 
 const credentials = {
   client_id: process.env.CLIENT_ID,
